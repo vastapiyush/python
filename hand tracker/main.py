@@ -25,7 +25,7 @@ while True:
                 # print(x,y)
                 if id == 8:
                     # cv.circle(img=frame,center=(x,y),radius=20,color=(255,0,0))
-                    pyautogui.moveTo(x*3,y*3)
+                    pyautogui.moveTo(x*2,y*2)
 
     print(hands)
     cv.flip(frame,0)
