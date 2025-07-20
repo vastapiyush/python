@@ -81,9 +81,8 @@ class Brick:
         return True
 
     def hit(self):
-        self.health -= 1
-        self.color = self.interpolate(
-            *self.colors, self.health/self.max_health)
+        self.health -= 2
+        
 
     @staticmethod
     def interpolate(color_a, color_b, t):

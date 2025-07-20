@@ -9,15 +9,15 @@ cam.set(cv.CAP_PROP_FRAME_WIDTH, 500)
 cam.set(cv.CAP_PROP_FRAME_HEIGHT, 2000)
 
 while True:
-    _,frame = cam.read()
-    frame = cv.flip(frame,1)
-    frame_height,frame_width,_= frame.shape
-    rgb = cv.cvtColor(frame,cv.COLOR_BGR2RGB)
+    _,screen = cam.read()
+    screen = cv.flip(screen,1)
+    frame_height,frame_width,_= screen.shape
+    rgb = cv.cvtColor(screen,cv.COLOR_BGR2RGB)
     output = hand_detector.process(rgb)
     hands = output.multi_hand_landmarks
     if hands :
         for hand in hands:
-            drawing.draw_landmarks(frame,hand)
+            drawing.draw_landmarks(screen,hand)
             landmarks = hand.landmark
             for id, landmark in enumerate(landmarks):
                 x=int(landmark.x*frame_width)
@@ -28,7 +28,7 @@ while True:
                     pyautogui.moveTo(x*2,y*2)
 
     print(hands)
-    cv.flip(frame,0)
-    cv.imshow("camera",frame)
+    cv.flip(screen,0)
+    cv.imshow("camera",screen)
     cv.waitKey(1)
 
